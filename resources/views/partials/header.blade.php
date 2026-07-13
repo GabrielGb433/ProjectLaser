@@ -1,6 +1,6 @@
 <header class="site-header" data-header>
     <div class="site-container header-inner">
-        <a class="header-brand" href="{{ route('home') }}#inicio" aria-label="Laser Catálogo — início">
+        <a class="header-brand" href="{{ route('home') }}#inicio" aria-label="Crie e Corte — início">
             <x-site.logo />
         </a>
 

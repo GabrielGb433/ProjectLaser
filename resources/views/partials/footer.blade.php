@@ -1,7 +1,7 @@
 <footer class="site-footer" id="rodape">
     <div class="site-container footer-grid">
         <div class="footer-brand">
-            <a href="{{ route('home') }}#inicio" aria-label="Laser Catálogo — início">
+            <a href="{{ route('home') }}#inicio" aria-label="Crie e Corte — início">
                 <x-site.logo />
             </a>
             <p>Precisão, cuidado e acabamento para transformar cada ideia em uma peça única.</p>
@@ -36,7 +36,7 @@
     </div>
 
     <div class="site-container footer-bottom">
-        <p>© {{ now()->year }} Laser Catálogo. Todos os direitos reservados.</p>
+        <p>© {{ now()->year }} Crie e Corte. Todos os direitos reservados.</p>
         <a href="{{ route('home') }}#inicio">Voltar ao topo <x-site.icon name="arrow-up" /></a>
     </div>
 </footer>

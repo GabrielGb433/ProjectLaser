@@ -1,6 +1,6 @@
 @extends('layouts.site')
 
-@section('title', 'Fotos — Laser Catálogo')
+@section('title', 'Fotos — Crie e Corte')
 
 @section('content')
     @php

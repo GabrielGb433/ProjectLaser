@@ -5,5 +5,5 @@
             <path d="m24 8 2.1 5.9L32 16l-5.9 2.1L24 24l-2.1-5.9L16 16l5.9-2.1L24 8Z" />
         </svg>
     </span>
-    <span class="brand-name">Laser<span>Catálogo</span></span>
+    <span class="brand-name">Crie <span>e Corte</span></span>
 </span>
