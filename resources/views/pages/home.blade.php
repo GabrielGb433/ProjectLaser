@@ -195,7 +195,7 @@
                 </div>
                 <div class="quote-action">
                     <p>Conte o que você precisa e receba uma orientação personalizada para começar.</p>
-                    <a class="button button-light" href="#contato">
+                    <a class="button button-light" href="https://wa.me/51984410896" target="_blank" rel="noopener noreferrer">
                         Solicitar orçamento
                         <x-site.icon name="arrow-up-right" />
                     </a>
