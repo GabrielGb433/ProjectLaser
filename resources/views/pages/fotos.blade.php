@@ -81,7 +81,17 @@
             @if ($fotos->isNotEmpty())
                 <div class="gallery-grid gallery-page-grid">
                     @foreach ($fotos as $foto)
-                        <figure class="gallery-item gallery-item-{{ ($loop->index % 5) + 1 }} reveal" data-reveal>
+                        <figure
+                            class="gallery-item gallery-item-{{ ($loop->index % 5) + 1 }} reveal"
+                            role="button"
+                            tabindex="0"
+                            aria-label="Ampliar foto: {{ $foto['titulo'] }}"
+                            data-reveal
+                            data-gallery-item
+                            data-gallery-src="{{ asset('storage/'.ltrim($foto['imagem'], '/')) }}"
+                            data-gallery-title="{{ $foto['titulo'] }}"
+                            data-gallery-category="{{ $foto['categoria'] ?: 'Projeto personalizado' }}"
+                        >
                             <img src="{{ asset('storage/'.ltrim($foto['imagem'], '/')) }}" alt="{{ $foto['titulo'] }}" loading="lazy">
                             <figcaption>
                                 <span>{{ $foto['categoria'] ?: 'Projeto personalizado' }}</span>
