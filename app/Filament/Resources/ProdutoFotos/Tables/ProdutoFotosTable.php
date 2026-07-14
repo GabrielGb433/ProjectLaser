@@ -10,7 +10,6 @@ use Filament\Tables\Columns\ImageColumn;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Filters\TernaryFilter;
 use Filament\Tables\Table;
-use Illuminate\Support\Facades\Storage;
 
 class ProdutoFotosTable
 {
@@ -21,10 +20,10 @@ class ProdutoFotosTable
                 ImageColumn::make('imagem')
                     ->label('Imagem')
                     ->disk('public')
-                    ->url(fn (?string $state): ?string => filled($state) ? Storage::disk('public')->url($state) : null, true)
                     ->extraImgAttributes([
                         'class' => 'cursor-zoom-in',
                         'title' => 'Clique para ampliar',
+                        'onclick' => "window.open(this.currentSrc || this.src, '_blank', 'noopener,noreferrer')",
                     ]),
                 TextColumn::make('produto.nome')
                     ->label('Produto')
