@@ -6,7 +6,7 @@
         <meta name="theme-color" content="#111111">
         <meta name="description" content="Projetos personalizados com corte e gravação a laser, feitos com precisão e acabamento profissional.">
 
-        <title>@yield('title', 'Crie e Corte — Precisão em cada detalhe')</title>
+        <title>@yield('title', ($configuracaoSite?->nome_site ?: 'Crie e Corte').' - Precisão em cada detalhe')</title>
 
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>

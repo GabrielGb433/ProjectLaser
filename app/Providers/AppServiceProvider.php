@@ -2,7 +2,10 @@
 
 namespace App\Providers;
 
+use App\Models\ConfiguracaoSite;
+use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
+use Illuminate\View\View as ViewInstance;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -11,7 +14,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        //
+        $this->app->scoped('site.configuracao', fn (): ?ConfiguracaoSite => ConfiguracaoSite::query()->first());
     }
 
     /**
@@ -19,6 +22,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        //
+        View::composer(['layouts.site', 'pages.*', 'components.site.logo'], function (ViewInstance $view): void {
+            $view->with('configuracaoSite', app('site.configuracao'));
+        });
     }
 }

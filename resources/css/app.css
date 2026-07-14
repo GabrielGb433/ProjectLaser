@@ -324,6 +324,15 @@ img {
     stroke-width: 1.6;
 }
 
+.brand-logo {
+    display: block;
+    width: auto;
+    max-width: 140px;
+    height: auto;
+    max-height: 40px;
+    object-fit: contain;
+}
+
 .brand-name {
     font-size: 1rem;
     font-weight: 600;

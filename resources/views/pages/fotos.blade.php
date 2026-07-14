@@ -1,6 +1,6 @@
 @extends('layouts.site')
 
-@section('title', 'Fotos — Crie e Corte')
+@section('title', 'Fotos - '.($configuracaoSite?->nome_site ?: 'Crie e Corte'))
 
 @section('content')
     @php

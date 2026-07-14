@@ -10,8 +10,8 @@ use Filament\Actions\DeleteAction;
 use Filament\Actions\DeleteBulkAction;
 use Filament\Actions\EditAction;
 use Filament\Forms\Components\FileUpload;
-use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Textarea;
+use Filament\Forms\Components\TextInput;
 use Filament\Resources\Resource;
 use Filament\Schemas\Schema;
 use Filament\Support\Icons\Heroicon;
@@ -43,12 +43,15 @@ class ConfiguracaoSiteResource extends Resource
                     ->acceptedFileTypes(['image/jpeg', 'image/png', 'image/webp']),
                 TextInput::make('whatsapp')
                     ->label('WhatsApp')
+                    ->helperText('Informe o número com DDI. Ex.: 5551985450905')
                     ->maxLength(255),
                 TextInput::make('email')
                     ->label('E-mail')
                     ->email()
                     ->maxLength(255),
                 TextInput::make('instagram')
+                    ->label('Instagram')
+                    ->helperText('Informe @usuario ou o link completo do perfil.')
                     ->maxLength(255),
                 Textarea::make('texto_quem_somos')
                     ->label('Texto quem somos')

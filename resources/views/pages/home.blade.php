@@ -1,5 +1,10 @@
 @extends('layouts.site')
 
+@php
+    $textoQuemSomos = trim((string) ($configuracaoSite?->texto_quem_somos ?? ''));
+    $whatsappUrl = $configuracaoSite?->whatsapp_url;
+@endphp
+
 @section('content')
     <section class="hero" id="inicio" data-slider aria-label="Banners em destaque">
         <div class="hero-slides">
@@ -109,8 +114,14 @@
             </div>
 
             <div class="about-copy reveal" data-reveal>
-                <p class="about-lead">Unimos tecnologia, atenção aos detalhes e um olhar cuidadoso para criar peças que comunicam, encantam e permanecem.</p>
-                <p>Cada projeto é acompanhado de perto — da escolha do material ao acabamento — para entregar soluções funcionais, consistentes e feitas sob medida.</p>
+                @if ($textoQuemSomos !== '')
+                    @foreach (preg_split('/\R{2,}/', $textoQuemSomos) as $paragrafo)
+                        <p class="{{ $loop->first ? 'about-lead' : '' }}">{!! nl2br(e(trim($paragrafo))) !!}</p>
+                    @endforeach
+                @else
+                    <p class="about-lead">Unimos tecnologia, atenção aos detalhes e um olhar cuidadoso para criar peças que comunicam, encantam e permanecem.</p>
+                    <p>Cada projeto é acompanhado de perto — da escolha do material ao acabamento — para entregar soluções funcionais, consistentes e feitas sob medida.</p>
+                @endif
                 <a class="text-link" href="#orcamentos">Conte sua ideia <x-site.icon name="arrow-right" /></a>
             </div>
         </div>
@@ -205,10 +216,12 @@
                 </div>
                 <div class="quote-action">
                     <p>Conte o que você precisa e receba uma orientação personalizada para começar.</p>
-                    <a class="button button-light" href="https://wa.me/5551985450905" target="_blank" rel="noopener noreferrer">
-                        Solicitar orçamento
-                        <x-site.icon name="arrow-up-right" />
-                    </a>
+                    @if ($whatsappUrl)
+                        <a class="button button-light" href="{{ $whatsappUrl }}" target="_blank" rel="noopener noreferrer">
+                            Solicitar orçamento
+                            <x-site.icon name="arrow-up-right" />
+                        </a>
+                    @endif
                 </div>
                 <span class="quote-orbit" aria-hidden="true"></span>
             </div>
