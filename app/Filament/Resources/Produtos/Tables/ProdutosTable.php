@@ -2,6 +2,7 @@
 
 namespace App\Filament\Resources\Produtos\Tables;
 
+use Filament\Actions\Action;
 use Filament\Actions\BulkActionGroup;
 use Filament\Actions\DeleteBulkAction;
 use Filament\Actions\EditAction;
@@ -11,6 +12,7 @@ use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Filters\SelectFilter;
 use Filament\Tables\Filters\TernaryFilter;
 use Filament\Tables\Table;
+use Illuminate\Support\Facades\Storage;
 
 class ProdutosTable
 {
@@ -21,10 +23,23 @@ class ProdutosTable
                 ImageColumn::make('imagem_principal')
                     ->label('Imagem')
                     ->disk('public')
+                    ->action(
+                        Action::make('visualizar_imagem')
+                            ->label('Visualizar imagem')
+                            ->modalHeading('Visualização da imagem')
+                            ->modalContent(fn ($record) => view('filament.components.image-preview', [
+                                'imageUrl' => filled($record->imagem_principal)
+                                    ? Storage::disk('public')->url($record->imagem_principal)
+                                    : null,
+                                'alt' => $record->nome ?? 'Imagem do produto',
+                            ]))
+                            ->modalSubmitAction(false)
+                            ->modalCancelAction(false)
+                            ->modalWidth('7xl'),
+                    )
                     ->extraImgAttributes([
                         'class' => 'cursor-zoom-in',
                         'title' => 'Clique para ampliar',
-                        'onclick' => "window.open(this.currentSrc || this.src, '_blank', 'noopener,noreferrer')",
                     ]),
                 TextColumn::make('nome')
                     ->searchable()

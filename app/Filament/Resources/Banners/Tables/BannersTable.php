@@ -2,6 +2,7 @@
 
 namespace App\Filament\Resources\Banners\Tables;
 
+use Filament\Actions\Action;
 use Filament\Actions\BulkActionGroup;
 use Filament\Actions\DeleteBulkAction;
 use Filament\Actions\EditAction;
@@ -10,6 +11,7 @@ use Filament\Tables\Columns\ImageColumn;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Filters\TernaryFilter;
 use Filament\Tables\Table;
+use Illuminate\Support\Facades\Storage;
 
 class BannersTable
 {
@@ -20,10 +22,23 @@ class BannersTable
                 ImageColumn::make('imagem')
                     ->label('Imagem')
                     ->disk('public')
+                    ->action(
+                        Action::make('visualizar_imagem')
+                            ->label('Visualizar imagem')
+                            ->modalHeading('Visualização da imagem')
+                            ->modalContent(fn ($record) => view('filament.components.image-preview', [
+                                'imageUrl' => filled($record->imagem)
+                                    ? Storage::disk('public')->url($record->imagem)
+                                    : null,
+                                'alt' => $record->titulo ?? 'Imagem do banner',
+                            ]))
+                            ->modalSubmitAction(false)
+                            ->modalCancelAction(false)
+                            ->modalWidth('7xl'),
+                    )
                     ->extraImgAttributes([
                         'class' => 'cursor-zoom-in',
                         'title' => 'Clique para ampliar',
-                        'onclick' => "window.open(this.currentSrc || this.src, '_blank', 'noopener,noreferrer')",
                     ]),
                 TextColumn::make('titulo')
                     ->searchable()
