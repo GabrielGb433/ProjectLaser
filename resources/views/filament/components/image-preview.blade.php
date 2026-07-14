@@ -3,7 +3,7 @@
         <img
             src="{{ $imageUrl }}"
             alt="{{ $alt }}"
-            class="max-h-[75vh] w-auto max-w-full rounded-lg object-contain"
+            class="max-h-[60vh] w-auto max-w-full rounded-lg object-contain"
         >
     @else
         <p class="text-sm text-gray-500">Nenhuma imagem disponível.</p>

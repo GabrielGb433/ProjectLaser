@@ -35,7 +35,7 @@ class ProdutosTable
                             ]))
                             ->modalSubmitAction(false)
                             ->modalCancelAction(false)
-                            ->modalWidth('7xl'),
+                            ->modalWidth('2xl'),
                     )
                     ->extraImgAttributes([
                         'class' => 'cursor-zoom-in',
