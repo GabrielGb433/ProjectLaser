@@ -11,6 +11,7 @@ use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Filters\SelectFilter;
 use Filament\Tables\Filters\TernaryFilter;
 use Filament\Tables\Table;
+use Illuminate\Support\Facades\Storage;
 
 class ProdutosTable
 {
@@ -20,7 +21,12 @@ class ProdutosTable
             ->columns([
                 ImageColumn::make('imagem_principal')
                     ->label('Imagem')
-                    ->disk('public'),
+                    ->disk('public')
+                    ->url(fn (?string $state): ?string => filled($state) ? Storage::disk('public')->url($state) : null, true)
+                    ->extraImgAttributes([
+                        'class' => 'cursor-zoom-in',
+                        'title' => 'Clique para ampliar',
+                    ]),
                 TextColumn::make('nome')
                     ->searchable()
                     ->sortable(),

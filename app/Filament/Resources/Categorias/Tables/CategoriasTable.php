@@ -10,6 +10,7 @@ use Filament\Tables\Columns\ImageColumn;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Filters\TernaryFilter;
 use Filament\Tables\Table;
+use Illuminate\Support\Facades\Storage;
 
 class CategoriasTable
 {
@@ -19,7 +20,12 @@ class CategoriasTable
             ->columns([
                 ImageColumn::make('imagem')
                     ->label('Imagem')
-                    ->disk('public'),
+                    ->disk('public')
+                    ->url(fn (?string $state): ?string => filled($state) ? Storage::disk('public')->url($state) : null, true)
+                    ->extraImgAttributes([
+                        'class' => 'cursor-zoom-in',
+                        'title' => 'Clique para ampliar',
+                    ]),
                 TextColumn::make('nome')
                     ->searchable()
                     ->sortable(),
