@@ -17,7 +17,7 @@
 
         <div class="footer-column" id="contato">
             <span class="footer-label">Contato</span>
-            <a href="https://wa.me/51984410896" target="_blank" rel="noopener noreferrer">Solicitar orçamento</a>
+            <a href="https://wa.me/5551985450905" target="_blank" rel="noopener noreferrer">Solicitar orçamento</a>
             <a href="{{ route('fotos.index') }}">Conhecer trabalhos</a>
             <span>Atendimento personalizado</span>
         </div>
@@ -28,7 +28,7 @@
                 <a href="{{ route('home') }}#orcamentos" aria-label="Instagram">
                     <x-site.icon name="instagram" />
                 </a>
-                <a href="https://wa.me/51984410896" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
+                <a href="https://wa.me/5551985450905" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
                     <x-site.icon name="whatsapp" />
                 </a>
             </div>
