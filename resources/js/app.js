@@ -100,7 +100,7 @@ if (slider) {
     const startAutoplay = () => {
         stopAutoplay();
         if (slides.length > 1 && !reduceMotion) {
-            autoplayTimer = window.setInterval(() => showSlide(activeIndex + 1), 5000);
+            autoplayTimer = window.setInterval(() => showSlide(activeIndex + 1), 4000);
         }
     };
 
@@ -121,8 +121,9 @@ if (slider) {
         });
     });
 
-    slider.addEventListener('mouseenter', stopAutoplay);
-    slider.addEventListener('mouseleave', startAutoplay);
+    // O hero ocupa boa parte da tela. Pausar no mouseenter fazia o carrossel
+    // parar assim que o visitante entrava na página e só voltar após clicar.
+    // Mantemos a pausa para navegação por teclado, quando há interação ativa.
     slider.addEventListener('focusin', stopAutoplay);
     slider.addEventListener('focusout', startAutoplay);
     document.addEventListener('visibilitychange', () => (document.hidden ? stopAutoplay() : startAutoplay()));
