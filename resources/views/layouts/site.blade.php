@@ -5,8 +5,8 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="theme-color" content="#111111">
         <meta name="description" content="Projetos personalizados com corte e gravação a laser, feitos com precisão e acabamento profissional.">
-        <link rel="icon" type="image/svg+xml" href="{{ asset('favicon.svg') }}">
-        <link rel="alternate icon" href="{{ asset('favicon.svg') }}">
+        <link rel="icon" type="image/png" href="{{ asset('brand/logo-mark.png') }}">
+        <link rel="apple-touch-icon" href="{{ asset('brand/logo-mark.png') }}">
 
         <title>@yield('title', ($configuracaoSite?->nome_site ?: 'Crie e Corte').' - Precisão em cada detalhe')</title>
 

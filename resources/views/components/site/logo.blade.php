@@ -1,13 +1,19 @@
 @php
     $nomeSite = $configuracaoSite?->nome_site ?: 'Crie e Corte';
-    $logoUrl = filled($configuracaoSite?->logo)
+    $logoConfigurada = filled($configuracaoSite?->logo);
+    $logoUrl = $logoConfigurada
         ? asset('storage/'.ltrim($configuracaoSite->logo, '/'))
-        : null;
+        : asset('brand/logo-mark.png');
 @endphp
 
 <span {{ $attributes->class(['brand-lockup']) }}>
     @if ($logoUrl)
-        <img class="brand-logo" src="{{ $logoUrl }}" alt="{{ $nomeSite }}">
+        <img
+            class="brand-logo {{ $logoConfigurada ? '' : 'brand-logo-mark' }}"
+            src="{{ $logoUrl }}"
+            alt=""
+            aria-hidden="true"
+        >
     @else
         <span class="brand-mark" aria-hidden="true">
             <svg viewBox="0 0 40 40" fill="none">
