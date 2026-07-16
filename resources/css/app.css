@@ -334,8 +334,8 @@ img {
 }
 
 .brand-logo-mark {
-    width: 42px;
-    height: 42px;
+    width: 50px;
+    height: 50px;
     padding: 4px;
     border-radius: 13px;
     background: rgba(255, 255, 255, .94);
@@ -1868,8 +1868,8 @@ body.gallery-is-open {
     }
 
     .brand-logo-mark {
-        width: 36px;
-        height: 36px;
+        width: 42px;
+        height: 42px;
         padding: 3px;
         border-radius: 11px;
     }
